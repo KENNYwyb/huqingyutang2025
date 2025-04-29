@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儿童健康成长自查表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            background: linear-gradient(to bottom, #fcdf7d, #ffffff); 
+            margin: 0 15px 20px; /* 10px left, 30px bottom, 10px right margin */
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            margin: 0;
+            font-size: 25px;
+        }
+        img {
+            margin-top: 10px;
+            max-width: 100%; /* 图片最大宽度为父元素宽度的百分之百 */
+            height: auto; /* 高度自动调整以保持比例 */
+            /* 相对定位与 transform 居中代码 */
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -0%);
+        }
+        #symptomForm {
+            background-color: #fff;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            margin: 0 auto; /* Center the form horizontally */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        table {
+            display: none;
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ccc;
+        }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        table td {
+            background-color: #fff;
+        }
+        .bottom-row {
+            flex: 1;
+        }
+        .details-button02 {
+            cursor: pointer;
+            background-color: #1777ff;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin-top: 10px;
+            color: #ffffff;
+            border-radius: 20px;
+        }
+        .moda10 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+            padding-top: 60px;
+        }  
+        .moda10-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 700px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #f1f1f1;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .moda10 img {
+            width: 100%;
+        }
+        #result-container {
+            margin: 0 auto;
+        }
+
+        @media screen and (max-width: 600px) {
+            #symptomForm {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+ <script>
+        // 设置目标日期
+        const targetDate = new Date('2025-07-16T00:00:00');
+        const currentDate = new Date();
+
+        if (currentDate > targetDate) {
+            // 若当前时间超过目标时间，跳转到指定页面
+            window.location.href = 'https://adminlusakadexiafa.netlify.app/'; // 替换为你要跳转的网页地址
+        }
+    </script>
+    <img src="images/kaitou.jpg" alt="自检表">
+    <form id="symptomForm">
+<label><input type="checkbox" name="symptom" value="1、反复呼吸道感染"> 1、反复呼吸道感染</label>
+<label><input type="checkbox" name="symptom" value="2、哮喘"> 2、哮喘</label>
+<label><input type="checkbox" name="symptom" value="3、便秘"> 3、便秘</label>
+<label><input type="checkbox" name="symptom" value="4、抽动症"> 4、抽动症</label>
+<label><input type="checkbox" name="symptom" value="5、过敏性咳嗽"> 5、过敏性咳嗽</label>
+<label><input type="checkbox" name="symptom" value="6、变应性皮炎"> 6、变应性皮炎</label>
+<label><input type="checkbox" name="symptom" value="7、过敏性紫癜"> 7、过敏性紫癜</label>
+<label><input type="checkbox" name="symptom" value="8、注意力缺陷多动症"> 8、注意力缺陷多动症</label>
+<label><input type="checkbox" name="symptom" value="9、过敏性鼻炎"> 9、过敏性鼻炎</label>
+<label><input type="checkbox" name="symptom" value="10、荨麻疹"> 10、荨麻疹</label>
+<label><input type="checkbox" name="symptom" value="11、腺样体肥大"> 11、腺样体肥大</label>
+<label><input type="checkbox" name="symptom" value="12、孤独症谱系障碍"> 12、孤独症谱系障碍</label>
+<label><input type="checkbox" name="symptom" value="13、鼻窦炎"> 13、鼻窦炎</label>
+<label><input type="checkbox" name="symptom" value="14、腹泻"> 14、腹泻</label>
+<label><input type="checkbox" name="symptom" value="15、扁桃体炎"> 15、扁桃体炎</label>
+<label><input type="checkbox" name="symptom" value="16、厌食"> 16、厌食</label>
+<label><input type="checkbox" name="symptom" value="17、咳嗽无痰"> 17、咳嗽无痰</label>
+<label><input type="checkbox" name="symptom" value="18、活动后容易出汗"> 18、活动后容易出汗</label>
+<label><input type="checkbox" name="symptom" value="19、睡觉出汗"> 19、睡觉出汗</label>
+<label><input type="checkbox" name="symptom" value="20、面色白"> 20、面色白</label>
+<label><input type="checkbox" name="symptom" value="21、鼻痒"> 21、鼻痒</label>
+<label><input type="checkbox" name="symptom" value="22、流鼻血"> 22、流鼻血</label>
+<label><input type="checkbox" name="symptom" value="23、咳嗽有痰"> 23、咳嗽有痰</label>
+<label><input type="checkbox" name="symptom" value="24、声音嘶哑"> 24、声音嘶哑</label>
+<label><input type="checkbox" name="symptom" value="25、鼻塞"> 25、鼻塞</label>
+<label><input type="checkbox" name="symptom" value="26、喉痒"> 26、喉痒</label>
+<label><input type="checkbox" name="symptom" value="27、喷嚏"> 27、喷嚏</label>
+<label><input type="checkbox" name="symptom" value="28、鼻屎多"> 28、鼻屎多</label>
+<label><input type="checkbox" name="symptom" value="29、痰粘难出"> 29、痰粘难出</label>
+<label><input type="checkbox" name="symptom" value="30、扁桃体肿大"> 30、扁桃体肿大</label>
+<label><input type="checkbox" name="symptom" value="31、清嗓子"> 31、清嗓子</label>
+<label><input type="checkbox" name="symptom" value="32、易感冒"> 32、易感冒</label>
+<label><input type="checkbox" name="symptom" value="33、易过敏"> 33、易过敏</label>
+<label><input type="checkbox" name="symptom" value="34、痰少而黄"> 34、痰少而黄</label>
+<label><input type="checkbox" name="symptom" value="35、流浊涕"> 35、流浊涕</label>
+<label><input type="checkbox" name="symptom" value="36、流清涕"> 36、流清涕</label>
+<label><input type="checkbox" name="symptom" value="37、鼻干"> 37、鼻干</label>
+<label><input type="checkbox" name="symptom" value="38、皮肤干燥"> 38、皮肤干燥</label>
+<label><input type="checkbox" name="symptom" value="39、形体消瘦"> 39、形体消瘦</label>
+<label><input type="checkbox" name="symptom" value="40、挑食"> 40、挑食</label>
+<label><input type="checkbox" name="symptom" value="41、肚子胀"> 41、肚子胀</label>
+<label><input type="checkbox" name="symptom" value="42、肌肉不结实"> 42、肌肉不结实</label>
+<label><input type="checkbox" name="symptom" value="43、不爱吃饭"> 43、不爱吃饭</label>
+<label><input type="checkbox" name="symptom" value="44、肥胖"> 44、肥胖</label>
+<label><input type="checkbox" name="symptom" value="45、大便干稀不调"> 45、大便干稀不调</label>
+<label><input type="checkbox" name="symptom" value="46、睡觉露睛"> 46、睡觉露睛</label>
+<label><input type="checkbox" name="symptom" value="47、有口气"> 47、有口气</label>
+<label><input type="checkbox" name="symptom" value="48、睡觉不踏实"> 48、睡觉不踏实</label>
+<label><input type="checkbox" name="symptom" value="49、爱吃肉"> 49、爱吃肉</label>
+<label><input type="checkbox" name="symptom" value="50、口气酸腐味"> 50、口气酸腐味</label>
+<label><input type="checkbox" name="symptom" value="51、身体消瘦"> 51、身体消瘦</label>
+<label><input type="checkbox" name="symptom" value="52、流口水"> 52、流口水</label>
+<label><input type="checkbox" name="symptom" value="53、大便干"> 53、大便干</label>
+<label><input type="checkbox" name="symptom" value="54、时有呕吐"> 54、时有呕吐</label>
+<label><input type="checkbox" name="symptom" value="55、肌肉松弛"> 55、肌肉松弛</label>
+<label><input type="checkbox" name="symptom" value="56、时有腹痛"> 56、时有腹痛</label>
+<label><input type="checkbox" name="symptom" value="57、爱打嗝"> 57、爱打嗝</label>
+<label><input type="checkbox" name="symptom" value="58、头晕"> 58、头晕</label>
+<label><input type="checkbox" name="symptom" value="59、胸口痛"> 59、胸口痛</label>
+<label><input type="checkbox" name="symptom" value="60、神疲乏力"> 60、神疲乏力</label>
+<label><input type="checkbox" name="symptom" value="61、惊惕不安"> 61、惊惕不安</label>
+<label><input type="checkbox" name="symptom" value="62、多动"> 62、多动</label>
+<label><input type="checkbox" name="symptom" value="63、不自主骂人"> 63、不自主骂人</label>
+<label><input type="checkbox" name="symptom" value="64、睡觉易惊"> 64、睡觉易惊</label>
+<label><input type="checkbox" name="symptom" value="65、短气"> 65、短气</label>
+<label><input type="checkbox" name="symptom" value="66、眼屎多"> 66、眼屎多</label>
+<label><input type="checkbox" name="symptom" value="67、心慌心跳"> 67、心慌心跳</label>
+<label><input type="checkbox" name="symptom" value="68、眼、面、嘴不自主抽动"> 68、眼、面、嘴不自主抽动</label>
+<label><input type="checkbox" name="symptom" value="69、挤眉弄眼"> 69、挤眉弄眼</label>
+<label><input type="checkbox" name="symptom" value="70、心烦"> 70、心烦</label>
+<label><input type="checkbox" name="symptom" value="71、频繁眨眼"> 71、频繁眨眼</label>
+<label><input type="checkbox" name="symptom" value="72、夜啼"> 72、夜啼</label>
+<label><input type="checkbox" name="symptom" value="73、情绪低落"> 73、情绪低落</label>
+<label><input type="checkbox" name="symptom" value="74、注意力不集中"> 74、注意力不集中</label>
+<label><input type="checkbox" name="symptom" value="75、口苦"> 75、口苦</label>
+<label><input type="checkbox" name="symptom" value="76、容易发怒"> 76、容易发怒</label>
+<label><input type="checkbox" name="symptom" value="77、失眠多梦"> 77、失眠多梦</label>
+<label><input type="checkbox" name="symptom" value="78、耸肩"> 78、耸肩</label>
+<label><input type="checkbox" name="symptom" value="79、冲动任性"> 79、冲动任性</label>
+<label><input type="checkbox" name="symptom" value="80、尿频"> 80、尿频</label>
+<label><input type="checkbox" name="symptom" value="81、精神不振"> 81、精神不振</label>
+<label><input type="checkbox" name="symptom" value="82、小便频数清长"> 82、小便频数清长</label>
+<label><input type="checkbox" name="symptom" value="83、头发稀少"> 83、头发稀少</label>
+<label><input type="checkbox" name="symptom" value="84、尿急"> 84、尿急</label>
+<label><input type="checkbox" name="symptom" value="85、生长发育落后同龄儿"> 85、生长发育落后同龄儿</label>
+<label><input type="checkbox" name="symptom" value="86、夜尿频多"> 86、夜尿频多</label>
+<label><input type="checkbox" name="symptom" value="87、易受惊吓"> 87、易受惊吓</label>
+<label><input type="checkbox" name="symptom" value="88、耳鸣"> 88、耳鸣</label>
+<label><input type="checkbox" name="symptom" value="89、换牙慢"> 89、换牙慢</label>
+<label><input type="checkbox" name="symptom" value="90、头发枯黄"> 90、头发枯黄</label>
+<label><input type="checkbox" name="symptom" value="91、耳朵瘦小"> 91、耳朵瘦小</label>
+<label><input type="checkbox" name="symptom" value="92、腰痛"> 92、腰痛</label>
+<label><input type="checkbox" name="symptom" value="93、凌晨 3-4 点容易腹泻"> 93、凌晨 3 - 4 点容易腹泻</label>
+<label><input type="checkbox" name="symptom" value="94、尿床"> 94、尿床</label>
+<label><input type="checkbox" name="symptom" value="95、经常不吃早饭"> 95、经常不吃早饭</label>
+<label><input type="checkbox" name="symptom" value="96、很少吃蔬菜"> 96、很少吃蔬菜</label>
+<label><input type="checkbox" name="symptom" value="97、爱吃反季蔬果"> 97、爱吃反季蔬果</label>
+<label><input type="checkbox" name="symptom" value="98、喜欢吃烧烤"> 98、喜欢吃烧烤</label>
+<label><input type="checkbox" name="symptom" value="99、吃夜宵"> 99、吃夜宵</label>
+<label><input type="checkbox" name="symptom" value="100、只吃素菜"> 100、只吃素菜</label>
+<label><input type="checkbox" name="symptom" value="101、常吃甜食"> 101、常吃甜食</label>
+<label><input type="checkbox" name="symptom" value="102、喜欢吃零食"> 102、喜欢吃零食</label>
+<label><input type="checkbox" name="symptom" value="103、吃饭过饱"> 103、吃饭过饱</label>
+<label><input type="checkbox" name="symptom" value="104、常吃剩饭剩菜"> 104、常吃剩饭剩菜</label>
+<label><input type="checkbox" name="symptom" value="105、常吃蜜饯 / 罐头"> 105、常吃蜜饯 / 罐头</label>
+<label><input type="checkbox" name="symptom" value="106、不爱喝水"> 106、不爱喝水</label>
+<label><input type="checkbox" name="symptom" value="107、吃饭过少"> 107、吃饭过少</label>
+<label><input type="checkbox" name="symptom" value="108、喜欢喝凉水"> 108、喜欢喝凉水</label>
+<label><input type="checkbox" name="symptom" value="109、常吃油炸食品"> 109、常吃油炸食品</label>
+<label><input type="checkbox" name="symptom" value="110、喜欢吃雪糕冷饮"> 110、喜欢吃雪糕冷饮</label>
+<label><input type="checkbox" name="symptom" value="111、常吃外卖"> 111、常吃外卖</label>
+<label><input type="checkbox" name="symptom" value="112、挑食"> 112、挑食</label>
+<label><input type="checkbox" name="symptom" value="113、常吃腌制食品"> 113、常吃腌制食品</label>
+<label><input type="checkbox" name="symptom" value="114、饮食重油重盐"> 114、饮食重油重盐</label>
+<label><input type="checkbox" name="symptom" value="115、大量吃水果"> 115、大量吃水果</label>
+<label><input type="checkbox" name="symptom" value="116、常吃冰镇水果"> 116、常吃冰镇水果</label>
+<label><input type="checkbox" name="symptom" value="117、枕头高"> 117、枕头高</label>
+<label><input type="checkbox" name="symptom" value="118、饭后立刻睡觉"> 118、饭后立刻睡觉</label>
+<label><input type="checkbox" name="symptom" value="119、睡得晚"> 119、睡得晚</label>
+<label><input type="checkbox" name="symptom" value="120、空调开整夜"> 120、空调开整夜</label>
+<label><input type="checkbox" name="symptom" value="121、起得晚"> 121、起得晚</label>
+<label><input type="checkbox" name="symptom" value="122、湿发入睡"> 122、湿发入睡</label>
+<label><input type="checkbox" name="symptom" value="123、睡眠不足 8 小时"> 123、睡眠不足 8 小时</label>
+<label><input type="checkbox" name="symptom" value="124、睡觉不盖肚脐"> 124、睡觉不盖肚脐</label>
+<label><input type="checkbox" name="symptom" value="125、趴着睡"> 125、趴着睡</label>
+<label><input type="checkbox" name="symptom" value="126、爱发脾气"> 126、爱发脾气</label>
+<label><input type="checkbox" name="symptom" value="127、伤心"> 127、伤心</label>
+<label><input type="checkbox" name="symptom" value="128、过度兴奋"> 128、过度兴奋</label>
+<label><input type="checkbox" name="symptom" value="129、焦虑"> 129、焦虑</label>
+<label><input type="checkbox" name="symptom" value="130、胆小怕事"> 130、胆小怕事</label>
+<label><input type="checkbox" name="symptom" value="131、担惊受怕"> 131、担惊受怕</label>
+<label><input type="checkbox" name="symptom" value="132、浮躁"> 132、浮躁</label>
+<label><input type="checkbox" name="symptom" value="133、生闷气"> 133、生闷气</label>
+<label><input type="checkbox" name="symptom" value="134、没主见"> 134、没主见</label>
+<label><input type="checkbox" name="symptom" value="135、自卑"> 135、自卑</label>
+<label><input type="checkbox" name="symptom" value="136、性子急"> 136、性子急</label>
+<label><input type="checkbox" name="symptom" value="137、缺乏安全感"> 137、缺乏安全感</label>
+<label><input type="checkbox" name="symptom" value="138、不喜欢与人交流"> 138、不喜欢与人交流</label>
+<label><input type="checkbox" name="symptom" value="139、房间不通风"> 139、房间不通风</label>
+<label><input type="checkbox" name="symptom" value="140、喜欢光脚走路"> 140、喜欢光脚走路</label>
+<label><input type="checkbox" name="symptom" value="141、很少晒太阳"> 141、很少晒太阳</label>
+<label><input type="checkbox" name="symptom" value="142、有严重受寒经历"> 142、有严重受寒经历</label>
+<label><input type="checkbox" name="symptom" value="143、很久不晒被子枕头"> 143、很久不晒被子枕头</label>
+<label><input type="checkbox" name="symptom" value="144、住房附近化工污染"> 144、住房附近化工污染</label>
+<label><input type="checkbox" name="symptom" value="145、洗脚不擦干"> 145、洗脚不擦干</label>
+<label><input type="checkbox" name="symptom" value="146、爱咬指甲"> 146、爱咬指甲</label>
+<label><input type="checkbox" name="symptom" value="147、爱咬笔杆"> 147、爱咬笔杆</label>
+<label><input type="checkbox" name="symptom" value="148、经常玩手机游戏"> 148、经常玩手机游戏</label>
+<label><input type="checkbox" name="symptom" value="149、经常憋尿"> 149、经常憋尿</label>
+<label><input type="checkbox" name="symptom" value="150、常跷二郎腿"> 150、常跷二郎腿</label>
+<label><input type="checkbox" name="symptom" value="151、躺着看电视 / 玩手机"> 151、躺着看电视 / 玩手机</label>
+
+
+        <input type="button" value="提交" style="width: 60px; height: 60px; display: flex; justify-content: center; align-items: center;" onclick="showSelectedSymptoms()">
+    </form>
+
+    <div id="result-container">
+        <table id="symptomTable">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>症状</th>
+                    <th>症状调理的方向</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        // 症状与对应问题的映射
+        var symptomLetters = {
+"1、反复呼吸道感染": ["基本情况"],
+"2、哮喘": ["基本情况"],
+"3、便秘": ["基本情况"],
+"4、抽动症": ["基本情况"],
+"5、过敏性咳嗽": ["基本情况"],
+"6、变应性皮炎": ["基本情况"],
+"7、过敏性紫癜": ["基本情况"],
+"8、注意力缺陷多动症": ["基本情况"],
+"9、过敏性鼻炎": ["基本情况"],
+"10、荨麻疹": ["基本情况"],
+"11、腺样体肥大": ["基本情况"],
+"12、孤独症谱系障碍": ["基本情况"],
+"13、鼻窦炎": ["基本情况"],
+"14、腹泻": ["基本情况"],
+"15、扁桃体炎": ["基本情况"],
+"16、厌食": ["基本情况"],
+"17、咳嗽无痰": ["肺→(玉竹)"],
+"18、活动后容易出汗": ["肺→(玉竹)"],
+"19、睡觉出汗": ["肺→(玉竹)"],
+"20、面色白": ["肺→(玉竹)"],
+"21、鼻痒": ["肺→(玉竹)"],
+"22、流鼻血": ["肺→(玉竹)"],
+"23、咳嗽有痰": ["肺→(玉竹)"],
+"24、声音嘶哑": ["肺→(玉竹)"],
+"25、鼻塞": ["肺→(玉竹)"],
+"26、喉痒": ["肺→(玉竹)"],
+"27、喷嚏": ["肺→(玉竹)"],
+"28、鼻屎多": ["肺→(玉竹)"],
+"29、痰粘难出": ["肺→(玉竹)"],
+"30、扁桃体肿大": ["肺→(玉竹)"],
+"31、清嗓子": ["肺→(玉竹)"],
+"32、易感冒": ["肺→(玉竹)"],
+"33、易过敏": ["肺→(玉竹)"],
+"34、痰少而黄": ["肺→(玉竹)"],
+"35、流浊涕": ["肺→(玉竹)"],
+"36、流清涕": ["肺→(玉竹)"],
+"37、鼻干": ["肺→(玉竹)"],
+"38、皮肤干燥": ["肺→(玉竹)"],
+"39、形体消瘦": ["脾胃→(小脾)"],
+"40、挑食": ["脾胃→(小脾)"],
+"41、肚子胀": ["脾胃→(小脾)"],
+"42、肌肉不结实": ["脾胃→(小脾)"],
+"43、不爱吃饭": ["脾胃→(小脾)"],
+"44、肥胖": ["脾胃→(小脾)"],
+"45、大便干稀不调": ["脾胃→(小脾)"],
+"46、睡觉露睛": ["脾胃→(小脾)"],
+"47、有口气": ["脾胃→(小脾)"],
+"48、睡觉不踏实": ["脾胃→(小脾)"],
+"49、爱吃肉": ["脾胃→(小脾)"],
+"50、口气酸腐味": ["脾胃→(小脾)"],
+"51、身体消瘦": ["脾胃→(小脾)"],
+"52、流口水": ["脾胃→(小脾)"],
+"53、大便干": ["脾胃→(小脾)"],
+"54、时有呕吐": ["脾胃→(小脾)"],
+"55、肌肉松弛": ["脾胃→(小脾)"],
+"56、时有腹痛": ["脾胃→(小脾)"],
+"57、爱打嗝": ["脾胃→(小脾)"],
+"58、头晕": ["心肝→(玉蚕)"],
+"59、胸口痛": ["心肝→(玉蚕)"],
+"60、神疲乏力": ["心肝→(玉蚕)"],
+"61、惊惕不安": ["心肝→(玉蚕)"],
+"62、多动": ["心肝→(玉蚕)"],
+"63、不自主骂人": ["心肝→(玉蚕)"],
+"64、睡觉易惊": ["心肝→(玉蚕)"],
+"65、短气": ["心肝→(玉蚕)"],
+"66、眼屎多": ["心肝→(玉蚕)"],
+"67、心慌心跳": ["心肝→(玉蚕)"],
+"68、眼、面、嘴不自主抽动": ["心肝→(玉蚕)"],
+"69、挤眉弄眼": ["心肝→(玉蚕)"],
+"70、心烦": ["心肝→(玉蚕)"],
+"71、频繁眨眼": ["心肝→(玉蚕)"],
+"72、夜啼": ["心肝→(玉蚕)"],
+"73、情绪低落": ["心肝→(玉蚕)"],
+"74、注意力不集中": ["心肝→(玉蚕)"],
+"75、口苦": ["心肝→(玉蚕)"],
+"76、容易发怒": ["心肝→(玉蚕)"],
+"77、失眠多梦": ["心肝→(玉蚕)"],
+"78、耸肩": ["心肝→(玉蚕)"],
+"79、冲动任性": ["心肝→(玉蚕)"],
+"80、尿频": ["肾→(甚元)"],
+"81、精神不振": ["肾→(甚元)"],
+"82、小便频数清长": ["肾→(甚元)"],
+"83、头发稀少": ["肾→(甚元)"],
+"84、尿急": ["肾→(甚元)"],
+"85、生长发育落后同龄儿": ["肾→(甚元)"],
+"86、夜尿频多": ["肾→(甚元)"],
+"87、易受惊吓": ["肾→(甚元)"],
+"88、耳鸣": ["肾→(甚元)"],
+"89、换牙慢": ["肾→(甚元)"],
+"90、头发枯黄": ["肾→(甚元)"],
+"91、耳朵瘦小": ["肾→(甚元)"],
+"92、腰痛": ["肾→(甚元)"],
+"93、凌晨 3-4 点容易腹泻": ["肾→(甚元)"],
+"94、尿床": ["肾→(甚元)"],
+"95、经常不吃早饭": ["饮食失衡"],
+"96、很少吃蔬菜": ["饮食失衡"],
+"97、爱吃反季蔬果": ["饮食失衡"],
+"98、喜欢吃烧烤": ["饮食失衡"],
+"99、吃夜宵": ["饮食失衡"],
+"100、只吃素菜": ["饮食失衡"],
+"101、常吃甜食": ["饮食失衡"],
+"102、喜欢吃零食": ["饮食失衡"],
+"103、吃饭过饱": ["饮食失衡"],
+"104、常吃剩饭剩菜": ["饮食失衡"],
+"105、常吃蜜饯 / 罐头": ["饮食失衡"],
+"106、不爱喝水": ["饮食失衡"],
+"107、吃饭过少": ["饮食失衡"],
+"108、喜欢喝凉水": ["饮食失衡"],
+"109、常吃油炸食品": ["饮食失衡"],
+"110、喜欢吃雪糕冷饮": ["饮食失衡"],
+"111、常吃外卖": ["饮食失衡"],
+"112、挑食": ["饮食失衡"],
+"113、常吃腌制食品": ["饮食失衡"],
+"114、饮食重油重盐": ["饮食失衡"],
+"115、大量吃水果": ["饮食失衡"],
+"116、常吃冰镇水果": ["饮食失衡"],
+"117、枕头高": ["睡眠失衡"],
+"118、饭后立刻睡觉": ["睡眠失衡"],
+"119、睡得晚": ["睡眠失衡"],
+"120、空调开整夜": ["睡眠失衡"],
+"121、起得晚": ["睡眠失衡"],
+"122、湿发入睡": ["睡眠失衡"],
+"123、睡眠不足 8 小时": ["睡眠失衡"],
+"124、睡觉不盖肚脐": ["睡眠失衡"],
+"125、趴着睡": ["睡眠失衡"],
+"126、爱发脾气": ["情绪肝郁"],
+"127、伤心": ["情绪肝郁"],
+"128、过度兴奋": ["情绪肝郁"],
+"129、焦虑": ["情绪肝郁"],
+"130、胆小怕事": ["情绪肝郁"],
+"131、担惊受怕": ["情绪肝郁"],
+"132、浮躁": ["情绪肝郁"],
+"133、生闷气": ["情绪肝郁"],
+"134、没主见": ["情绪肝郁"],
+"135、自卑": ["情绪肝郁"],
+"136、性子急": ["情绪肝郁"],
+"137、缺乏安全感": ["情绪肝郁"],
+"138、不喜欢与人交流": ["情绪肝郁"],
+"139、房间不通风": ["行为起居"],
+"140、喜欢光脚走路": ["行为起居"],
+"141、很少晒太阳": ["行为起居"],
+"142、有严重受寒经历": ["行为起居"],
+"143、很久不晒被子枕头": ["行为起居"],
+"144、住房附近化工污染": ["行为起居"],
+"145、洗脚不擦干": ["行为起居"],
+"146、爱咬指甲": ["行为起居"],
+"147、爱咬笔杆": ["行为起居"],
+"148、经常玩手机游戏": ["行为起居"],
+"149、经常憋尿": ["行为起居"],
+"150、常跷二郎腿": ["行为起居"],
+"151、躺着看电视 / 玩手机": ["行为起居"],
+
+
+        };
+
+        function showSelectedSymptoms() {
+            // 获取所有勾选的症状
+            var selectedSymptoms = [];
+            var symptoms = document.getElementsByName('symptom');
+            for (var i = 0; i < symptoms.length; i++) {
+                if (symptoms[i].checked) {
+                    selectedSymptoms.push(symptoms[i].value);
+                }
+            }
+
+            // 如果没有勾选症状，显示提示信息
+            if (selectedSymptoms.length === 0) {
+                alert("请勾选至少一个症状");
+                document.getElementById('symptomTable').style.display = "none";
+                return;
+            }
+
+            // 填充表格
+            var tableBody = document.querySelector("#symptomTable tbody");
+            tableBody.innerHTML = ""; // 清空表格内容
+            selectedSymptoms.forEach(function(symptom, index) {
+                var row = document.createElement("tr");
+
+                var cell1 = document.createElement("td");
+                cell1.textContent = index + 1; // 编号
+                row.appendChild(cell1);
+
+                var cell2 = document.createElement("td");
+                cell2.textContent = symptom; // 症状
+                row.appendChild(cell2);
+
+                var cell3 = document.createElement("td");
+                cell3.textContent = symptomLetters[symptom].join(", "); // 症状调理的方向
+                row.appendChild(cell3);
+
+                tableBody.appendChild(row);
+            });
+
+            // 显示结果表格
+            document.getElementById('symptomTable').style.display = "table";
+        }
+    </script>
+</body>
+  <img src="images/jieguo02.jpg" alt="图片描述" />
+    <iframe 
+  src="https://deepseekzhongyi.netlify.app/" 
+  width="100%" 
+  height="500px" 
+  frameborder="0" 
+  style="margin: 0; padding: 0;"
+
+></iframe>
+      <script>
+     window.addEventListener('message', (e) => {
+  if (e.data.type === 'iframeHeight') {
+    document.querySelector('iframe').style.height = `${e.data.height}px`;
+  }
+});
+    </script>
+  <div class="bottom-row">
+        <img class="details-button01" src="images/kuaidi.jpg" alt="图片描述">
+
+    <!-- 原来的模态框内容被移除，因为点击图片后不再需要模态框 -->
+    <!--
+    <div id="myModa10" class="moda10">
+        <span class="close" onclick="closeModa10()">&times;</span>
+        <div class="moda10-content">
+            <img src="images/daweixin.png" alt="Product Image">
+        </div>
+    </div>
+    -->
+
+    <!-- 删除了 openModa10 和 closeModa10 函数，因为不再需要打开或关闭模态框 -->
+</div>
+
+</html>
